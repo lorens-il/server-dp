@@ -1,7 +1,7 @@
 import sequelize from '../db.js';
 import { DataTypes } from 'sequelize';
 
-const User = sequelize.define('User', {
+const Worker = sequelize.define('Worker', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     login: { type: DataTypes.STRING, primaryKey: true },
     password: { type: DataTypes.STRING },
@@ -16,4 +16,10 @@ const Hardware = sequelize.define('Hardware', {
     category: { type: DataTypes.STRING, allowNull: false}
 });
 
-export {User, Hardware};
+const TrainingMaterial = sequelize.define('TrainingMaterial', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    title: { type: DataTypes.STRING, allowNull: false},
+    desc: { type: DataTypes.TEXT, allowNull: false},
+});
+
+export {Worker, Hardware, TrainingMaterial};
