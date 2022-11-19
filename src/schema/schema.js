@@ -6,7 +6,6 @@ const schema = buildSchema(`
         id: ID
         login: String
         password: String
-        role: String
     }
 
     type Hardware {
@@ -29,17 +28,33 @@ const schema = buildSchema(`
 
     input WorkerInput {
         id: ID
-        login: String!
-        password: String!
-        role: String!
+        login: String
+        password: String
+        role: String
+        workerDate: WorkerDataInput
+    } 
+
+    input WorkerDataInput {
+        id: ID
+        fio: String!
+        phone: Int!
+        mail: String!
+        post: String!
     } 
 
     input HardwareInput {
         id: ID
-        login: String!
-        password: String!
-        role: String!
+        name: String
+        status: String
+        date: String
+        category: String
     } 
+
+    input TrainingMaterialInput {
+        id: ID
+        title: String
+        desc: String
+    }
 
     type Query {
         getAllHardware: [Hardware]
@@ -47,8 +62,12 @@ const schema = buildSchema(`
     }
 
     type Mutation {
-        addWorker(input: WorkerInput): Token
+        registration(input: WorkerInput): Token
+        login(input: WorkerInput): Token
+        addHardware(input: HardwareInput): Hardware
+        addTrainingMaterial(input: TrainingMaterialInput): TrainingMaterial
+        updateHardware(input: HardwareInput): Hardware
+        deleteHardware(input: HardwareInput): Hardware
     }
 `);
-
 export default schema;
