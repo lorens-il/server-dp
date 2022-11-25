@@ -46,13 +46,13 @@ Workers.hasMany(Сontract, {onDelete: 'CASCADE'});
 Workers.hasMany(Hardware, {onDelete: 'CASCADE'});
 Hardware.belongsTo(Workers);
 
-Сontract.hasOne(Date, {as: 'Date', onDelete: 'CASCADE'});
+Сontract.hasOne(Date, {onDelete: 'CASCADE'});
 Date.belongsTo(Сontract);
 
-Hardware.hasOne(Date, {as: 'Date', onDelete: 'CASCADE'});
+Hardware.hasOne(Date, {onDelete: 'CASCADE'});
 Date.belongsTo(Hardware);
 
-TrainingMaterial.hasOne(Date, {as: 'Date', onDelete: 'CASCADE'});
+TrainingMaterial.hasOne(Date, {onDelete: 'CASCADE'});
 Date.belongsTo(TrainingMaterial);
 
 export { 

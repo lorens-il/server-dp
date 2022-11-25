@@ -12,8 +12,17 @@ const schema = buildSchema(`
         id: ID
         name: String
         status: String
-        date: String
         category: String
+        Date: Date
+        WorkerId: ID
+    }
+
+    type Date { 
+        id: ID
+        date: String
+        ContractId: ID
+        HardwareId: ID
+        TrainingMaterialId: ID
     }
 
     type TrainingMaterial {
@@ -66,6 +75,7 @@ const schema = buildSchema(`
         login(input: WorkerInput): Token
         addHardware(input: HardwareInput): Hardware
         addTrainingMaterial(input: TrainingMaterialInput): TrainingMaterial
+        deleteTrainingMaterial(input: TrainingMaterialInput): TrainingMaterial
         updateHardware(input: HardwareInput): Hardware
         deleteHardware(input: HardwareInput): Hardware
     }

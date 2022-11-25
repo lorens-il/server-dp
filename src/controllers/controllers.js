@@ -44,12 +44,10 @@ const root = {
             return await error
         }
     },
-    addHardware: async ({input: {date, ...otherData}}) => { // необходимо добавить id сервисного инженера
-        // return Hardware.create({...input});
-        const hardware = await Hardware.create({...otherData});
-        console.log(hardware.getDataValue('id'))
-        const dateAdd = await Date.create({dateId: hardware.getDataValue('id'), date});
-        console.log(date, "11111111", hardware)
+    addHardware: async ({input: {id, date, ...otherData}}) => { // необходимо добавить id сервисного инженера
+        const hardware = await Hardware.create({...otherData, WorkerId: id});
+        await Date.create({HardwareId: hardware.getDataValue('id'), date});
+        return await Hardware.findOne({where: {id: hardware.getDataValue('id')}, include: [{ model: Date}]})
     },
     addTrainingMaterial: async ({input}) => {
         return await TrainingMaterial.create({...input});
@@ -57,6 +55,12 @@ const root = {
     getTrainingMaterial: async () => {
         return (await TrainingMaterial.findAndCountAll()).rows;
         
+    },
+    deleteTrainingMaterial: async ({input}) => {
+        const check = await TrainingMaterial.findOne({where: {id: input.id}});
+        const del = await TrainingMaterial.destroy({where: {id: input.id}});
+        validateId(del);
+        return check;
     },
     getAllHardware: async () => {
         return (await Hardware.findAndCountAll()).rows;
