@@ -52,11 +52,11 @@ const schema = buildSchema(`
     } 
 
     input HardwareInput {
-        id: ID
-        name: String
-        status: String
-        date: String
-        category: String
+        id: ID!
+        name: String!
+        status: String!
+        date: String!
+        category: String!
     } 
 
     input TrainingMaterialInput {
@@ -74,10 +74,10 @@ const schema = buildSchema(`
         registration(input: WorkerInput): Token
         login(input: WorkerInput): Token
         addHardware(input: HardwareInput): Hardware
+        updateHardware(input: HardwareInput): Hardware
+        deleteHardware(id: ID): Hardware
         addTrainingMaterial(input: TrainingMaterialInput): TrainingMaterial
         deleteTrainingMaterial(input: TrainingMaterialInput): TrainingMaterial
-        updateHardware(input: HardwareInput): Hardware
-        deleteHardware(input: HardwareInput): Hardware
     }
 `);
 export default schema;
