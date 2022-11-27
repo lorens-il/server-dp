@@ -86,9 +86,9 @@ const root = {
         return (await TrainingMaterial.findAndCountAll()).rows;
         
     },
-    deleteTrainingMaterial: async ({input}) => {
-        const check = await TrainingMaterial.findOne({where: {id: input.id}});
-        const del = await TrainingMaterial.destroy({where: {id: input.id}});
+    deleteTrainingMaterial: async ({id}) => {
+        const check = await TrainingMaterial.findOne({where: {id}});
+        const del = await TrainingMaterial.destroy({where: {id}});
         validateId(del);
         return check;
     }

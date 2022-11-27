@@ -77,7 +77,7 @@ const schema = buildSchema(`
         updateHardware(input: HardwareInput): Hardware
         deleteHardware(id: ID): Hardware
         addTrainingMaterial(input: TrainingMaterialInput): TrainingMaterial
-        deleteTrainingMaterial(input: TrainingMaterialInput): TrainingMaterial
+        deleteTrainingMaterial(id: ID): TrainingMaterial
     }
 `);
 export default schema;
