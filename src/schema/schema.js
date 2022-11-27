@@ -66,7 +66,7 @@ const schema = buildSchema(`
     }
 
     type Query {
-        getAllHardware: [Hardware]
+        getAllHardware(category: String): [Hardware]
         getTrainingMaterial: [TrainingMaterial]
     }
 
