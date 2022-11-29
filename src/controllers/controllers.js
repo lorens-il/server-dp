@@ -49,7 +49,8 @@ const root = {
         await Date.create({HardwareId: hardware.getDataValue('id'), date});
         return await Hardware.findOne({where: {id: hardware.getDataValue('id')}, include: [{ model: Date}]})
     },
-    getAllHardware: async ({category}) => {
+    getAllHardware: async ({category}, req) => {
+        console.log(req.user)
         return (await Hardware.findAndCountAll({where: {category}, include: 
             [{
                 model: Date
@@ -91,6 +92,10 @@ const root = {
         const del = await TrainingMaterial.destroy({where: {id}});
         validateId(del);
         return check;
+    },
+    getNewToken: async(req) => {
+        const token = generateToken(req.user.id, req.user.role);
+        return {token}
     }
 }
 

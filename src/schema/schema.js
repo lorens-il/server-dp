@@ -68,6 +68,7 @@ const schema = buildSchema(`
     type Query {
         getAllHardware(category: String): [Hardware]
         getTrainingMaterial: [TrainingMaterial]
+        getNewToken: Token
     }
 
     type Mutation {
