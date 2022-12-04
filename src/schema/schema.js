@@ -15,6 +15,8 @@ const schema = buildSchema(`
         category: String
         Date: Date
         WorkerId: ID
+        createdAt: String
+        updatedAt: String
     }
 
     type Date { 
@@ -37,8 +39,8 @@ const schema = buildSchema(`
 
     input WorkerInput {
         id: ID
-        login: String
-        password: String
+        login: String!
+        password: String!
         role: String
         workerDate: WorkerDataInput
     } 

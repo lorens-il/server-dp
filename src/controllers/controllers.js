@@ -49,8 +49,7 @@ const root = {
         await Date.create({HardwareId: hardware.getDataValue('id'), date});
         return await Hardware.findOne({where: {id: hardware.getDataValue('id')}, include: [{ model: Date}]})
     },
-    getAllHardware: async ({category}, req) => {
-        console.log(req.user)
+    getAllHardware: async ({category}) => {
         return (await Hardware.findAndCountAll({where: {category}, include: 
             [{
                 model: Date
